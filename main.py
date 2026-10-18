@@ -15,6 +15,7 @@ import re
 import sqlite3
 import time
 import unicodedata
+import argparse
 from datetime import datetime, timezone
 from typing import Any
 from urllib.parse import urlparse
@@ -330,5 +331,35 @@ def main() -> None:
         time.sleep(hours * 3600)
 
 
+
+def main(once: bool = False) -> None:
+    config = load_config()
+    hours = max(1, int(config.get("frequencia_horas", 12)))
+
+    log.info("Radar iniciado; intervalo configurado: %s horas", hours)
+    log.info(
+        "A busca por palavras-chave NÃO confirma elegibilidade acadêmica; "
+        "o edital precisa ser verificado."
+    )
+
+    if once:
+        log.info("Modo de execução única ativado.")
+        run_cycle(config)
+        log.info("Execução única concluída.")
+        return
+
+    while True:
+        run_cycle(config)
+        log.info("Próxima consulta em %s horas", hours)
+        time.sleep(hours * 3600)
+
+
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Radar de Concursos")
+    parser.add_argument(
+        "--once",
+        action="store_true",
+        help="Executa uma consulta e encerra o programa.",
+    )
+    args = parser.parse_args()
+    main(once=args.once)
