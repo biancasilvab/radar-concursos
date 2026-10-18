@@ -1,0 +1,38 @@
+{
+  "frequencia_horas": 12,
+  "localizacao": {
+    "abrangencia": "Brasil",
+    "estados": [],
+    "cidades": []
+  },
+  "areas_cargos": [
+    "Perito Criminal",
+    "Perito Oficial",
+    "Perito em Informática",
+    "Perícia Digital",
+    "Computação Forense",
+    "Segurança da Informação",
+    "Cibersegurança",
+    "Analista de Segurança da Informação",
+    "Analista de TI",
+    "Analista de Sistemas",
+    "Redes de Computadores",
+    "Infraestrutura de TI",
+    "Administrador de Redes",
+    "Suporte de TI"
+  ],
+  "formacoes": {
+    "curso_principal": ["Ciência da Computação", "Ciencia da Computacao", "Tecnologia da Informação","Tecnologia da Informacao", "Informática", "Informatica", "Sistemas de Informação", "Sistemas de Informacao"],
+    "qualquer_graduacao": true,
+    "formacoes_correlatas": []
+  },
+  "situacoes_desejadas": [
+    "inscricoes_abertas",
+    "autorizado_ou_previsto"
+  ],
+  "notificar_apenas_novos": true,
+  "limite_resultados_por_busca": 50,
+  "fontes": {
+    "pci_mcp": true
+  }
+}
