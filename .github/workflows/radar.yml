@@ -1,0 +1,45 @@
+
+name: Radar de Concursos
+
+on:
+  schedule:
+    - cron: "17 */12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: radar-concursos
+  cancel-in-progress: false
+
+jobs:
+  consultar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Baixar projeto
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restaurar histórico SQLite
+        uses: actions/cache@v4
+        with:
+          path: concursos.db
+          key: radar-db-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            radar-db-${{ github.ref_name }}-
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Executar Radar
+        run: python main.py --once
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
