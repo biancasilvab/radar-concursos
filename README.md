@@ -8,6 +8,12 @@ A página oficial da PCI MCP documenta cinco ferramentas, entre elas `buscar_por
 
 A pesquisa por palavras-chave encontra candidatos, não prova elegibilidade. O programa rotula a formação como indício ou revisão necessária. A confirmação exige ler o edital oficial e verificar formação, habilitação, registro profissional quando aplicável e atribuições do cargo.
 
+## Pré-requisitos
+
+- **Python 3.11** ou superior.
+- **Bot do Telegram:** Crie um bot conversando com o [@BotFather](https://t.me/botfather) para obter o `TELEGRAM_BOT_TOKEN`.
+- **Chat ID:** Obtenha seu ID numérico (usando bots como o `@userinfobot`) para preencher o `TELEGRAM_CHAT_ID`.
+
 ## Instalação no Windows 11
 
 1. Instale Python 3.11 ou superior.
